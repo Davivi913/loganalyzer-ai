@@ -10,8 +10,7 @@ from models import AnalysisResult
 
 app = FastAPI(title="LogAnalyzer AI", version="1.0.0")
 
-BASE_DIR = Path(__file__).parent.parent
-FRONTEND_DIR = BASE_DIR / "frontend"
+FRONTEND_DIR = Path("/app/frontend")
 
 app.add_middleware(
     CORSMiddleware,
