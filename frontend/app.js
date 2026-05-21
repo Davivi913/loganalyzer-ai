@@ -211,7 +211,7 @@ function renderHistory() {
 function exportPDF() {
     if (!lastResult) return;
     var win = window.open('', '_blank');
-    var severityColors = { critical: '#ef4444', high: '#f97316', medium: '#eab308', low: '#22c55e' };
+    var severityColors = { critical: '#ef4444', high: '#f97316', medium: '#eab308', low: '#86c7ef' };
     var alertsHTML = lastResult.alerts.map(function(a) {
         return '<div style="border:1px solid #ddd;border-radius:8px;padding:12px;margin-bottom:12px">' +
             '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">' +
