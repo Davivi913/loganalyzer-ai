@@ -143,7 +143,7 @@ function renderChart(alerts) {
     alerts.forEach(function(a) { if (counts[a.severity] !== undefined) counts[a.severity]++; });
 
     var max = Math.max(counts.critical, counts.high, counts.medium, counts.low, 1);
-    var colors = { critical: '#ef4444', high: '#f97316', medium: '#eab308', low: '#22c55e' };
+    var colors = { critical: '#ef4444', high: '#f97316', medium: '#eab308', low: '#86c7ef' };
     var chartEl = document.getElementById('severityChart');
     chartEl.innerHTML = '';
 
