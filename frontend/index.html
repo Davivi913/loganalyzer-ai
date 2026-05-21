@@ -28,4 +28,35 @@
 <div class="log-type-badge" id="logTypeBadge"></div>
 <div class="stats-grid">
 <div class="stat-card">
-<div class="label">Lineas analizad
+<div class="label">Lineas analizadas</div>
+<div class="value" id="statTotal">0</div>
+</div>
+<div class="stat-card">
+<div class="label">Lineas sospechosas</div>
+<div class="value" id="statSuspicious" style="color:#f97316">0</div>
+</div>
+<div class="stat-card">
+<div class="label">Alertas generadas</div>
+<div class="value" id="statAlerts" style="color:#ef4444">0</div>
+</div>
+<div class="stat-card">
+<div class="label">Tasa de anomalias</div>
+<div class="value" id="statRate">0%</div>
+</div>
+</div>
+<div class="summary-box" id="summaryBox"></div>
+<div class="chart-box">
+<div class="alerts-title">Distribucion de severidad</div>
+<div id="severityChart" style="display:flex;gap:1rem;align-items:flex-end;height:120px;padding:1rem 0"></div>
+</div>
+<div class="alerts-title">Alertas detectadas</div>
+<div id="alertsList"></div>
+<div class="history-box">
+<div class="alerts-title">Historial de sesion</div>
+<div id="historyList"></div>
+</div>
+</div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
