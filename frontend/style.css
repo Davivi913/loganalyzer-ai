@@ -174,3 +174,32 @@ header span { font-size: 0.8rem; color: #64748b; background: #2d3148; padding: 2
     border-radius: 10px;
     border: 1px solid #166534;
 }
+.chart-box, .history-box {
+    background: #1a1d2e;
+    border: 1px solid #2d3148;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #7c83f5;
+    color: #7c83f5;
+}
+
+.btn-outline:hover { background: #7c83f5; color: white; }
+
+.history-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #2d3148;
+    font-size: 0.85rem;
+}
+
+.history-file { color: #e2e8f0; flex: 2; }
+.history-type { color: #7c83f5; flex: 1; }
+.history-alerts { color: #f97316; flex: 1; }
+.history-time { color: #475569; flex: 1; text-align: right; }
