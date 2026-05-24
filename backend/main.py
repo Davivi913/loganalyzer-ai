@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pathlib import Path
 import os
-from parser import parse_logs
+from log_parser import parse_logs
 from analyzer import analyze_with_ai
 from models import AnalysisResult
 
