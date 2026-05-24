@@ -20,19 +20,24 @@ LOG_PATTERNS = {
         r'etc/passwd',
     ],
     "syslog": [
-        r"error|ERROR",
-        r"critical|CRITICAL",
-        r"segfault",
-        r"kernel:.*warning",
-        r"OOM|Out of memory",
-    ]
+    r"[Ee][Rr][Rr][Oo][Rr]",
+    r"[Cc][Rr][Ii][Tt][Ii][Cc][Aa][Ll]",
+    r"[Ss][Ee][Gg][Ff][Aa][Uu][Ll][Tt]",
+    r"[Oo][Uu][Tt]\s+[Oo][Ff]\s+[Mm][Ee][Mm][Oo][Rr][Yy]",
+    r"[Oo][Oo][Mm]",
+    r"[Kk][Ii][Ll][Ll][Ee][Dd]\s+[Pp][Rr][Oo][Cc][Ee][Ss][Ss]",
+    r"[Ff][Aa][Ii][Ll][Ee][Dd]",
+    r"[Cc][Oo][Rr][Rr][Uu][Pp][Tt]",
+    r"CVE-\d+",
+    r"[Ff][Ll][Oo][Oo][Dd]",
+],
 }
 
 def detect_log_type(content: str) -> str:
     lines = content.lower()
     if "failed password" in lines or "sshd" in lines or "pam_unix" in lines:
         return "auth"
-    if '"get ' in lines or '"post ' in lines or "nginx" in lines:
+    if '"get ' in lines or '"post ' in lines or "nginx" in lines or "http/1" in lines:
         return "nginx"
     return "syslog"
 
