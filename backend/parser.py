@@ -20,17 +20,18 @@ LOG_PATTERNS = {
         r'etc/passwd',
     ],
     "syslog": [
-    r"[Ee][Rr][Rr][Oo][Rr]",
-    r"[Cc][Rr][Ii][Tt][Ii][Cc][Aa][Ll]",
-    r"[Ss][Ee][Gg][Ff][Aa][Uu][Ll][Tt]",
-    r"[Oo][Uu][Tt]\s+[Oo][Ff]\s+[Mm][Ee][Mm][Oo][Rr][Yy]",
-    r"[Oo][Oo][Mm]",
-    r"[Kk][Ii][Ll][Ll][Ee][Dd]\s+[Pp][Rr][Oo][Cc][Ee][Ss][Ss]",
-    r"[Ff][Aa][Ii][Ll][Ee][Dd]",
-    r"[Cc][Oo][Rr][Rr][Uu][Pp][Tt]",
-    r"CVE-\d+",
-    r"[Ff][Ll][Oo][Oo][Dd]",
-],
+        r"error",
+        r"critical",
+        r"segfault",
+        r"out of memory",
+        r"oom",
+        r"killed process",
+        r"failed",
+        r"corrupt",
+        r"CVE-",
+        r"flood",
+        r"vulnerability",
+    ],
 }
 
 def detect_log_type(content: str) -> str:
@@ -41,7 +42,7 @@ def detect_log_type(content: str) -> str:
         return "nginx"
     return "syslog"
 
-def extract_timestamp(line: str) -> str | None:
+def extract_timestamp(line: str):
     patterns = [
         r'\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}',
         r'\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}',
@@ -56,10 +57,8 @@ def extract_timestamp(line: str) -> str | None:
 def parse_logs(content: str) -> Tuple[List[LogEntry], str, List[str]]:
     log_type = detect_log_type(content)
     patterns = LOG_PATTERNS.get(log_type, LOG_PATTERNS["syslog"])
-    
     entries = []
     suspicious_lines = []
-
     for i, line in enumerate(content.splitlines(), 1):
         if not line.strip():
             continue
@@ -74,5 +73,4 @@ def parse_logs(content: str) -> Tuple[List[LogEntry], str, List[str]]:
             if re.search(pattern, line, re.IGNORECASE):
                 suspicious_lines.append(line.strip())
                 break
-
     return entries, log_type, suspicious_lines
